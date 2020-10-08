@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+{% if search %}
+    {{ search }}
+{% endif %}
+
+{% if api %}
+    {% if api == "ERROR..." %}
+        Incorrect Symbol, please try again...
+    {% else %}
+        <h2>{{ api.companyName}}</h2>
+            Symbol: {{ api.symbol }} <br/>
+            Latest Price: ${{ api.latestPrice }} <br/>
+            Change: {{ api.change }} <br/>
+            Change Percentage: {{ api.changePercent }} <br/>
+            Market Captital: {{ api.marketCap }} <br/><br/>
+    {% endif %}
+{% endif %}
+
+{% endblock content %}
