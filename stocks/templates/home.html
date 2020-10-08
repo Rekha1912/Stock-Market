@@ -1,10 +1,30 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h1> Hello World! </h1>
-<br/>
-<br/>
+{% if api %}
+    {% if api == "ERROR..." %}
+        There is a problem with your URL, please try again...
+    {% else %}
+        <h2>{{ api.companyName}}</h2>
+            Symbol: {{ api.symbol }} <br/>
+            Latest Price: ${{ api.latestPrice }} <br/>
+            Change: {{ api.change }} <br/>
+            Change Percentage: {{ api.changePercent }} <br/>
+            Market Captital: {{ api.marketCap }} <br/><br/>
+    {% endif %}
+{% endif %}
 
-{{ api }}
+{% if api %}
+    {% if api == "ERROR..." %}
+        There is a problem with your URL, please try again...
+    {% else %}
+        <h2>{{ api.companyName}}</h2>
+            Symbol: {{ api.symbol }} <br/>
+            Latest Price: ${{ api.latestPrice }} <br/>
+            Change: {{ api.change }} <br/>
+            Change Percentage: {{ api.changePercent }} <br/>
+            Market Captital: {{ api.marketCap }} <br/><br/>
+    {% endif %}
+{% endif %}
 
 {% endblock content %}
