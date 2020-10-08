@@ -1,18 +1,9 @@
-<!--
-for text box and search button
-
-<form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
--->
-
 <!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+        <script src="https://kit.fontawesome.com/a076d05399.js"></script>
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
@@ -32,6 +23,12 @@ for text box and search button
                 </ul>
             </div>
         </nav>
+
+        <form action="{% url 'search' %}" class="container form-inline my-2 my-lg-0" method="POST">
+            {% csrf_token %}
+            <input class="form-control mr-sm-2" type="search" placeholder="Search Symbols" aria-label="Search" name="search">
+            <button class="btn btn-outline-dark my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+        </form>
 
         <div class="container">
             <br/>
