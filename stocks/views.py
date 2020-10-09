@@ -3,22 +3,23 @@ from django.shortcuts import render
 def home(request):
     import requests
     import json
-
-    api_request = requests.get("https://cloud.iexapis.com/stable/stock/AAPL/quote?token=pk_eb2cdb77af5847bb94c4ec9b9dfc076e")
     
+
+    api_request = requests.get("https://cloud.iexapis.com/stable/stock/MSFT/quote?token=pk_eb2cdb77af5847bb94c4ec9b9dfc076e")
     try:
         api = json.loads(api_request.content)
     except Exception as e:
         api = "ERROR..."
-    return render(request, 'home.html', {'api':api})
 
-    api_request = requests.get("https://cloud.iexapis.com/stable/stock/FB/quote?token=pk_eb2cdb77af5847bb94c4ec9b9dfc076e")
-
+    api_request1 = requests.get("https://cloud.iexapis.com/stable/stock/keys/quote?token=pk_eb2cdb77af5847bb94c4ec9b9dfc076e")
     try:
-        api = json.loads(api_request.content)
+        api1 = json.loads(api_request1.content)
+        xxx = api1['latestPrice'] * 100
     except Exception as e:
-        api = "ERROR..."
-    return render(request, 'home.html', {'api':api})
+        api1 = "ERROR..."
+    return render(request, 'home.html', {'api':api,'api1':api1, 'xxx':xxx})
+
+    
 
 def search(request):
     import requests
