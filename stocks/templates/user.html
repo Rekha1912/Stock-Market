@@ -1,35 +1,55 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<div class="container">
-    <h2>Portfolio</h2>
-    <br/>
-    <table class="table table-bordered table-hover">
-        <thead class="thead-dark">
-            <tr>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Email</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>John</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
-                </tr>
-            <tr>
-                <td>Mary</td>
-                <td>Moe</td>
-                <td>mary@example.com</td>
-            </tr>
-            <tr>
-                <td>July</td>
-                <td>Dooley</td>
-                <td>july@example.com</td>
-            </tr>
-        </tbody>
-    </table>
-  </div>
+        <div class="container">
+            <h2>Portfolio</h2>
+            <br/>
+            <table class="table table-bordered table-hover">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Stock</th>
+                        <th>Latest Price</th>
+                        <th>Quantity</th>
+                        <th>Value</th>
+                        <th>Buy/Sell</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> AAPL </td>
+                        <td> {{ api.latestPrice }} </td>
+                        <td>  </td>
+                        <td> ${{ latvalue }} </td>
+                        <td><input type="button" id="tst" value="OK" onclick="fnselect()" /></td>
+                        </tr>
+                    <tr>
+                        <td> GOOG </td>
+                        <td> {{ api1.latestPrice }} </td>
+                        <td></td>
+                        <td> ${{ latvalue1 }} </td>
+                        <td><input type="button" id="tst" value="OK" onclick="fnselect()" /></td>
+                    </tr>
+                    <tr>
+                        <td><h6>TOTAL CASH </h6></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    
+<form action="" class= "form my-2 my-lg-0" method="POST">
+    {% csrf_token %}
+    <div class="actionbox">
+        <input class="mr-sm-2" type="number" placeholder="Quantity" name="quantity">
+        <input type="radio" id="buy" name="action" value="buy">
+            <label for="buy"> BUY </label>
+        <input type="radio" id="sell" name="action" value="sell">
+            <label for="sell"> SELL </label>
+        <button class="btn btn-outline-dark" type="submit" > Submit </button>
+    </div>
+</form>
 
 {% endblock content %}
