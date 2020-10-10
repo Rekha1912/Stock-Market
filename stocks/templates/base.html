@@ -41,7 +41,7 @@
         <div class="row">
             <div class="col">
                 {% if user.is_authenticated %}
-                    <h3>Hi {{ user.username }} !!</h3>
+                    <h3><a href="{% url 'user' %}"> Hi {{ user.username }} !! </a></h3>
                 {% else %}
                     <p>You are not logged in.</p>
                 {% endif %}
