@@ -7,62 +7,60 @@
     }
 </script>
 
-        <div class="container">
-            <h2>Portfolio</h2>
-            <br/>
-            <table class="table table-bordered table-hover">
-                <thead class="thead-dark">
-                    <tr>
-                        <th>Stock</th>
-                        <th>Latest Price</th>
-                        <th>Quantity</th>
-                        <th>Value</th>
-                        <th>Buy/Sell</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td> AAPL </td>
-                        <td> {{ api.latestPrice }} </td>
-                        <td>  </td>
-                        <td> ${{ latvalue }} </td>
-                        <td><input type="radio" name="selectstock" onclick="fnselect('AAPL','{{ api.latestPrice }}')" /></td>
-                        </tr>
-                    <tr>
-                        <td> GOOG </td>
-                        <td> {{ api1.latestPrice }} </td>
-                        <td></td>
-                        <td> ${{ latvalue1 }} </td>
-                        <td><input type="radio" name="selectstock" onclick="fnselect('GOOG','{{ api1.latestPrice }}')" /></td>
-                    </tr>
-                    <tr>
-                        <td><h6>TOTAL CASH </h6></td>
-                        <td>{{ quantity }}</td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    
-<form action="{% url 'user'%}" class= "form my-2 my-lg-0" method="POST">
-    {% csrf_token %}
-    <div class="actionbox">
-        <input id="selectedstock" type="hidden" name="stockname" />
-        <input id="username" type="hidden" name="username" value='{{user.username}}'/>
-        <input id="lastprice" type="hidden" name="lastprice" />
-        <input id="cashvalue" type="hidden" name="cashvalue
-        " value="10000"/>
-        
-        <input class="mr-sm-2" type="number" placeholder="Quantity" name="quantity">
-        <input type="radio" id="buy" name="action" value="buy">
-            <label for="buy"> BUY </label>
-        <input type="radio" id="sell" name="action" value="sell">
-            <label for="sell"> SELL </label>
-        <button class="btn btn-outline-dark" type="submit" > Submit </button>
-        
+    <div class="container">
+        <h2>Stock Table</h2>
+        <br/>
+        <table class="table table-bordered table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th> STOCK </th>
+                    <th> LATEST PRICE </th>
+                    <th> QUANTITY </th>
+                    <th> VALUE </th>
+                    <th> BUY/SELL </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td> <h6>AAPL</h6> </td>
+                    <td> ${{ api.latestPrice }} </td>
+                    <td> {{a_quantity}} </td>
+                    <td> ${{ latvalue }} </td>
+                    <td> <input type="radio" name="selectstock" onclick="fnselect('AAPL','{{ api.latestPrice }}')" /> </td>
+                </tr>
+                <tr>
+                    <td> <h6>GOOG</h6> </td>
+                    <td> ${{ api1.latestPrice }} </td>
+                    <td> {{g_quantity}} </td>
+                    <td> ${{ latvalue1 }} </td>
+                    <td> <input type="radio" name="selectstock" onclick="fnselect('GOOG','{{ api1.latestPrice }}')" /> </td>
+                </tr>
+                <tr>
+                    <td> <h6>TOTAL CASH </h6> </td>
+                    <td> ${{ cashlatvalue }} </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
-</form>
+    <br/>
+    <h4 style="color: red;"> {{ message }} </h4>
+    
+    <form action="{% url 'user'%}" class= "form my-2 my-lg-0" method="POST">
+        {% csrf_token %}
+        <div class="actionbox">
+            <input id="selectedstock" type="hidden" name="stockname" />
+            <input id="username" type="hidden" name="username" value='{{user.username}}'/>
+            <input id="lastprice" type="hidden" name="lastprice" />
+            <input id="cashvalue" type="hidden" name="cashvalue" value="10004"/>
+            
+            <input class="mr-sm-2" type="number" placeholder="Quantity" name="quantity">
+            <input type="radio" id="buy" name="action" value="buy">
+                <label for="buy"> BUY </label>
+            <input type="radio" id="sell" name="action" value="sell">
+                <label for="sell"> SELL </label>
+            <button class="btn btn-outline-dark" type="submit" > Submit </button>
+            
+        </div>
+    </form>
 
 {% endblock content %}

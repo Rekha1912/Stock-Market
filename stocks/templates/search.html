@@ -10,11 +10,14 @@
     {% if api == "ERROR..." %}
         <h4>Incorrect Symbol, please try again...</h4>
     {% else %}
-        <h2>{{ api.companyName}}</h2>
+        <h2>{{ api.companyName}}</h2> <br/>
             Symbol: {{ api.symbol }} <br/>
             Latest Price: ${{ api.latestPrice }} <br/>
             Change: {{ api.change }} <br/>
             Change Percentage: {{ api.changePercent }} <br/>
+            Highest Price: {{ api.high }} <br/>
+            Lowest Price: {{ api.low }} <br/>
+            Last Updated: {{ api.latestTime }} <br/>
             Market Captital: {{ api.marketCap }} <br/><br/>
     {% endif %}
 {% endif %}
