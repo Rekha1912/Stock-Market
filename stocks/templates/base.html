@@ -39,9 +39,14 @@
         </nav>       
     <br/>
         <div class="row">
-            <div class="col">
+            <div class="col nametag">
                 {% if user.is_authenticated %}
-                    <h3><a href="{% url 'user' %}"> Hi {{ user.username }} !! </a></h3>
+                    <h3>
+                        <form action="{% url 'user' %}" method="GET">
+                        <input id="username" type="hidden" name="username" value='{{user.username}}'/>
+                        <input style="cursor:pointer" type="submit" value='{{ user.username }} Portfolio Page'>
+                     </form>
+                    </h3>
                 {% else %}
                     <p>You are not logged in.</p>
                 {% endif %}

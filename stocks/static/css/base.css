@@ -1,8 +1,11 @@
+.nametag {
+    text-align: right;
+    padding-right: 7vw;
+    font-size: large;
+}
 h3 a { 
     color:black;
-    padding-right: 7vw;
     font-size: larger;
-    float: right;
 }
 
 .actionbox {
