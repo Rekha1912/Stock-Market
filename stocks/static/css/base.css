@@ -1,17 +1,8 @@
-body {
-    
-}
-
-.row {
-    padding-right: 7vw;
-    font-size: larger;
-    text-align: right;
-    text-decoration: underline;
-}
-
-
 h3 a { 
     color:black;
+    padding-right: 7vw;
+    font-size: larger;
+    float: right;
 }
 
 .actionbox {
@@ -20,3 +11,11 @@ h3 a {
     padding-top: 2vw;
     word-spacing: 5px;
 }
+
+.stockrow {
+    align-items: center;
+}
+.stockcol {
+    padding-left: 5vw;
+}
+
