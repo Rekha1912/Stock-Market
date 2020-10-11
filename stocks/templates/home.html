@@ -5,25 +5,41 @@
     {% if api == "ERROR..." %}
         There is a problem with your URL, please try again...
     {% else %}
-        <h2>{{ api.companyName}}</h2>
-            Symbol: {{ api.symbol }} <br/>
-            Latest Price: ${{ api.latestPrice }} <br/>
-            Change: {{ api.change }} <br/>
-            Change Percentage: {{ api.changePercent }} <br/>
-            Market Captital: {{ api.marketCap }} <br/><br/>
+        <div class="row stockrow">
+            <div class="col stockcol">
+                <h2>{{ api.companyName}}</h2>
+                    Symbol: {{ api.symbol }} <br/>
+                    Latest Price: ${{ api.latestPrice }} <br/>
+                    Change: {{ api.change }} <br/>
+                    Change Percentage: {{ api.changePercent }} <br/>
+                    Market Captital: {{ api.marketCap }} <br/><br/>
+            </div>
+            <div class="col">
+                <img src='{{image}}'/>
+            </div>
+        </div>
     {% endif %}
 {% endif %}
+
+<br/>
 
 {% if api1 %}
     {% if api1 == "ERROR..." %}
         There is a problem with your URL, please try again...
     {% else %}
-        <h2>{{ api1.companyName}}</h2>
-            Symbol: {{ api1.symbol }} <br/>
-            Latest Price: ${{ api1.latestPrice }} <br/>
-            Change: {{ api1.change }} <br/>
-            Change Percentage: {{ api1.changePercent }} <br/>
-            Market Captital: {{ api1.marketCap }} <br/><br/>
+        <div class="row stockrow">
+            <div class="col stockcol">
+                <h2>{{ api1.companyName}}</h2>
+                    Symbol: {{ api1.symbol }} <br/>
+                    Latest Price: ${{ api1.latestPrice }} <br/>
+                    Change: {{ api1.change }} <br/>
+                    Change Percentage: {{ api1.changePercent }} <br/>
+                    Market Captital: {{ api1.marketCap }} <br/><br/>
+            </div>
+            <div class="col">
+                <img src='{{image1}}'/>
+            </div>
+        </div>
     {% endif %}
 {% endif %}
 
