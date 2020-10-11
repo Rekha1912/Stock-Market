@@ -1,5 +1,11 @@
 {% extends 'base.html' %}
 {% block content %}
+<script>
+    function fnselect(ticker,lastprice){
+        document.getElementById("selectedstock").value=ticker;
+        document.getElementById("lastprice").value=lastprice;
+    }
+</script>
 
         <div class="container">
             <h2>Portfolio</h2>
@@ -20,18 +26,18 @@
                         <td> {{ api.latestPrice }} </td>
                         <td>  </td>
                         <td> ${{ latvalue }} </td>
-                        <td><input type="button" id="tst" value="OK" onclick="fnselect()" /></td>
+                        <td><input type="radio" name="selectstock" onclick="fnselect('AAPL','{{ api.latestPrice }}')" /></td>
                         </tr>
                     <tr>
                         <td> GOOG </td>
                         <td> {{ api1.latestPrice }} </td>
                         <td></td>
                         <td> ${{ latvalue1 }} </td>
-                        <td><input type="button" id="tst" value="OK" onclick="fnselect()" /></td>
+                        <td><input type="radio" name="selectstock" onclick="fnselect('GOOG','{{ api1.latestPrice }}')" /></td>
                     </tr>
                     <tr>
                         <td><h6>TOTAL CASH </h6></td>
-                        <td></td>
+                        <td>{{ quantity }}</td>
                         <td></td>
                         <td></td>
                         <td></td>
@@ -40,15 +46,22 @@
             </table>
         </div>
     
-<form action="" class= "form my-2 my-lg-0" method="POST">
+<form action="{% url 'user'%}" class= "form my-2 my-lg-0" method="POST">
     {% csrf_token %}
     <div class="actionbox">
+        <input id="selectedstock" type="hidden" name="stockname" />
+        <input id="username" type="hidden" name="username" value='{{user.username}}'/>
+        <input id="lastprice" type="hidden" name="lastprice" />
+        <input id="cashvalue" type="hidden" name="cashvalue
+        " value="10000"/>
+        
         <input class="mr-sm-2" type="number" placeholder="Quantity" name="quantity">
         <input type="radio" id="buy" name="action" value="buy">
             <label for="buy"> BUY </label>
         <input type="radio" id="sell" name="action" value="sell">
             <label for="sell"> SELL </label>
         <button class="btn btn-outline-dark" type="submit" > Submit </button>
+        
     </div>
 </form>
 
