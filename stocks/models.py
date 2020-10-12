@@ -5,7 +5,6 @@ class Userstock(models.Model):
     stockname = models.CharField(max_length=20)
     lastprice = models.FloatField()
     quantity = models.IntegerField()
-    cashvalue = models.FloatField()
 
     STOCK_ACTION = [
         ('buy', 'BUY'),
@@ -34,6 +33,5 @@ class StockQuantity(models.Model):
     class Meta:
         unique_together = ('username', 'stockname')
 
-    
     def __str__(self):
         return self.username                  
