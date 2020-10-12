@@ -8,7 +8,6 @@ def home(request):
     import json
     import matplotlib
     import matplotlib.pyplot as plt
-    import numpy as np
     import base64
     from io import BytesIO
     

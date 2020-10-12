@@ -9,6 +9,7 @@ verify_ssl = true
 django = "==3.0.1"
 gunicorn = "==19.9.0"
 requests = "*"
+matplotlib = "*"
 
 [requires]
 python_version = "3.8"
