@@ -34,5 +34,7 @@ Installation and Setup Instructions for the project.
 5. To Visit App:
     http://127.0.0.1:8000/
 
+Heroku deployed URL - https://boiling-stream-78496.herokuapp.com/
+
 
 
