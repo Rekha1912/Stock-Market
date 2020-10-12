@@ -110,10 +110,13 @@ def user(request):
     display_message = ''
 
     if request.method == 'POST':
+        if request.POST['action'] == 'reset':
+                Userstock.objects.all().filter(username=request.POST['username']).delete()
+                Cash.objects.all().filter(username=request.POST['username']).delete()
+                StockQuantity.objects.all().filter(username=request.POST['username']).delete()
+                return render(request, 'user.html', {'api':api,'api1':api1, 'latvalue':0,'latvalue1':0,'a_quantity':0,'g_quantity':0,'cashlatvalue':10000, 'message':"Reset Done!"})
         form = StockForm(request.POST or None)
         if form.is_valid():
-            form.save()
-            messages.success(request,("Stock added"))
             if request.POST['action'] == 'buy':
                 cash_instance, created = Cash.objects.get_or_create(username=request.POST['username'])
                 quantity_instance, created = StockQuantity.objects.get_or_create(username=request.POST['username'], stockname=request.POST['stockname'])
@@ -128,7 +131,7 @@ def user(request):
                     quantity_instance.save()
                 else:
                     display_message = "Insufficient cash to BUY"
-            else:
+            elif request.POST['action'] == 'sell':
                 cash_instance, created = Cash.objects.get_or_create(username=request.POST['username'])
                 quantity_instance, created = StockQuantity.objects.get_or_create(username=request.POST['username'], stockname=request.POST['stockname'])
                 quantity = request.POST['quantity']
@@ -142,8 +145,8 @@ def user(request):
                     quantity_instance.save()
                 else:
                     display_message = "Insufficient stock to SELL"
-
-            #return redirect('user')
+            form.save()
+            messages.success(request,("Stock added"))
             aapl_quantity_instance, created = StockQuantity.objects.get_or_create(username=request.POST['username'], stockname='AAPL')
             goog_quantity_instance, created = StockQuantity.objects.get_or_create(username=request.POST['username'], stockname='GOOG')
             latvalue = api['latestPrice'] * int(aapl_quantity_instance.quantity)

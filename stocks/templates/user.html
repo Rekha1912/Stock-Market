@@ -5,6 +5,17 @@
         document.getElementById("selectedstock").value=ticker;
         document.getElementById("lastprice").value=lastprice;
     }
+    function submitUserForm(){
+        var selstock = document.getElementById("selectedstock").value;
+        var actionval = document.getElementById("buy").checked;
+        var actionval1 = document.getElementById("sell").checked;
+        var stockqt = document.getElementById("stockquantity").value;
+        if(selstock != "" && (actionval != false || actionval1 != false) && stockqt != "" & stockqt != 0){
+            document.getElementById("stockForm").submit();
+        }else{
+            alert("Please Select Stock, Enter Quanity & Buy/Sell.")
+        }
+    }
 </script>
 
     <div class="container">
@@ -45,22 +56,34 @@
     <br/>
     <h4 style="color: red;"> {{ message }} </h4>
     
-    <form action="{% url 'user'%}" class= "form my-2 my-lg-0" method="POST">
+    <form id="stockForm" action="{% url 'user'%}" class= "form my-2 my-lg-0" method="POST">
         {% csrf_token %}
         <div class="actionbox">
             <input id="selectedstock" type="hidden" name="stockname" />
             <input id="username" type="hidden" name="username" value='{{user.username}}'/>
             <input id="lastprice" type="hidden" name="lastprice" />
-            <input id="cashvalue" type="hidden" name="cashvalue" value="10004"/>
             
-            <input class="mr-sm-2" type="number" placeholder="Quantity" name="quantity">
+            <input id="stockquantity" class="mr-sm-2" type="number" placeholder="Quantity" name="quantity">
             <input type="radio" id="buy" name="action" value="buy">
                 <label for="buy"> BUY </label>
             <input type="radio" id="sell" name="action" value="sell">
                 <label for="sell"> SELL </label>
-            <button class="btn btn-outline-dark" type="submit" > Submit </button>
+            <!--<button class="btn btn-outline-dark" type="submit" > Submit </button>-->
+            <input class="btn btn-outline-dark" type="button" onclick="submitUserForm()" value="Submit">
+        </div>
+    </form>
+
+    <form action="{% url 'user'%}" class= "form my-2 my-lg-0" method="POST">
+        {% csrf_token %}
+        <div class="actionbox">
+            <input id="username" type="hidden" name="username" value='{{user.username}}'/>
+            <input type="hidden" name="action" value="reset">
+            <button class="btn btn-outline-dark" type="submit" > Reset </button>
             
         </div>
     </form>
+    
+
+    
 
 {% endblock content %}
