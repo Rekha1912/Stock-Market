@@ -1,11 +1,11 @@
 .nametag {
     text-align: right;
     padding-right: 7vw;
-    font-size: large;
 }
-h3 a { 
-    color:black;
-    font-size: larger;
+
+.tag {
+    color: black;
+    cursor: pointer;
 }
 
 .actionbox {
@@ -22,3 +22,12 @@ h3 a {
     padding-left: 5vw;
 }
 
+.rowfoot {
+    color: white;
+    text-align: center;
+    font-size: medium;
+}
+
+.resetbox {
+    text-align: center;
+}

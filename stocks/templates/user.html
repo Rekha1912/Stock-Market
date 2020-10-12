@@ -68,18 +68,16 @@
                 <label for="buy"> BUY </label>
             <input type="radio" id="sell" name="action" value="sell">
                 <label for="sell"> SELL </label>
-            <!--<button class="btn btn-outline-dark" type="submit" > Submit </button>-->
             <input class="btn btn-outline-dark" type="button" onclick="submitUserForm()" value="Submit">
         </div>
     </form>
 
     <form action="{% url 'user'%}" class= "form my-2 my-lg-0" method="POST">
         {% csrf_token %}
-        <div class="actionbox">
+        <div class=" resetbox">
             <input id="username" type="hidden" name="username" value='{{user.username}}'/>
             <input type="hidden" name="action" value="reset">
-            <button class="btn btn-outline-dark" type="submit" > Reset </button>
-            
+            <button class="btn btn-outline-dark" type="submit" > Reset </button>   
         </div>
     </form>
     
