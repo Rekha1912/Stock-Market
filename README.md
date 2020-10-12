@@ -13,6 +13,7 @@ CSS page - base.css and Bootstrap
 Python page - models.py, views.py, admin.py, forms.py and urls.py
 Django project - stock_market
 Django app - stocks, accounts
+Django models - Userstock, Cash and StockQuantity
 
 Future improvements:
 1. Can buy any interest stocks.
